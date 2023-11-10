@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int getWinner(vector<int>& arr, int k) {
+        int maxi = INT_MIN;
+        for(auto i : arr){
+            maxi = max(maxi,i);
+        }
+        if(k>=arr.size()){
+            return maxi;
+        }
+        else{
+            int n = arr.size();
+            int curr = arr[0];
+            int count = 0;
+            for(int i = 1 ; i < n && count<k ; i++){
+                if(arr[i]>curr){
+                    curr = arr[i];
+                    count =1;
+                }
+                else{
+                    count++;
+                }
+            }
+            return curr;
+        }
+
+        return -1;
+    }
+};
