@@ -1,0 +1,38 @@
+#define lli long long int 
+long long int mod = 1e9+7;
+class Solution {
+public:
+    int countHomogenous(string s) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+       
+        lli ans = 0 ;
+        int n = s.length();
+        int i = 0;
+        char prev = s[0];
+        lli count = 1;
+
+        for(int i = 1 ; i < n; i++){
+            if(s[i]==prev){
+                count++;
+            }
+            else{
+                lli temp  = (count*(count+1))/2;
+                ans+=temp;
+                prev=s[i];
+                count=1;
+            }
+        }
+
+
+        lli temp = (count*(count+1))/2;
+        ans+=temp;
+
+        return ans%mod;
+        
+
+
+        
+    }
+};
