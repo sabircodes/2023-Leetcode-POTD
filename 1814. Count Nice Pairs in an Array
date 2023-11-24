@@ -1,0 +1,38 @@
+#define ll long long
+const ll mod = 1e9+7;
+class Solution {
+public:
+    int rev(int i){
+        int ans = 0 ;
+        while(i>0){
+            int r = i%10;
+            ans = 10*ans+r;
+            i/=10;
+        }
+        return ans;
+    }
+
+    int countNicePairs(vector<int>& nums) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+
+
+        unordered_map<int,int>mp;
+        for(auto &i : nums){
+            int val = i-rev(i);
+            mp[val]++;
+        }
+        int count = 0 ;
+        for(auto &i : mp){
+            int key = i.first;
+            int val = i.second;
+            if(val>1){
+                ll pair= ((long long)(val)*(val-1)/2)%mod;
+                count = (count+pair)%mod;
+                
+            }
+        }
+         return count;
+    }
+};
