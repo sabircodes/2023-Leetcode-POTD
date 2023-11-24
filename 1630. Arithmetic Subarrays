@@ -1,0 +1,38 @@
+class Solution {
+public:
+           
+    vector<bool> checkArithmeticSubarrays(vector<int>& nums, vector<int>& l, vector<int>& r) {
+         ios::sync_with_stdio(0);
+            cin.tie(0);
+            cout.tie(0);
+        
+        int i = 0 ;
+        int n = l.size();
+        vector<bool>ans(n,true);
+
+        while(i<n){
+            
+            vector<int>temp;
+            int st = l[i];
+            int en = r[i];
+            for(int j = st ; j <=en ; j++){
+                temp.push_back(nums[j]);
+            }
+           if(temp.size()>2){
+            sort(temp.begin(),temp.end());
+            int val = temp[1]-temp[0];
+            for(int j = 2 ; j < temp.size() ; j++ ){
+                if(temp[j]-temp[j-1] != val){
+                    ans[i]=false;
+                    break;
+                }
+            }
+          }
+          i++;
+
+        }
+        return ans;
+
+        
+    }
+};
