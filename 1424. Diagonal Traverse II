@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> findDiagonalOrder(vector<vector<int>>& nums) {
+        int n = nums.size();
+        // {sum , {row , val}}
+        vector<pair<int,pair<int,int>>>vec;
+        for(int i = 0; i < n ; i++){
+            for(int j = 0 ; j < nums[i].size() ; j++){
+                vec.push_back({i+j,{j,nums[i][j]}});
+            }
+        }
+
+        sort(vec.begin(),vec.end());
+        vector<int>ans;
+        for(auto i : vec){
+            ans.push_back(i.second.second);
+        }
+
+        return ans;
+        
+    }
+};
