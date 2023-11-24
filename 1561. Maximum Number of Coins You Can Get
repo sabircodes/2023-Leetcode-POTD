@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxCoins(vector<int>& p) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+        sort(p.begin(),p.end());
+        int n = p.size();
+        int st = n/3;
+        int en = n-2;
+        int sum = 0 ;
+
+        for(int i = st ; i <=en ; i+=2){
+            sum+=p[i];
+        }
+        
+        return sum;
+    }
+};
