@@ -1,0 +1,41 @@
+#define ll long long
+#define vll vector<long long>
+class Solution {
+public:
+    int minimumOneBitOperations(int n) {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+
+        int ans = 0;
+        if(n==0)return 0;
+        vll bit(31,0);
+        bit[0]=1;
+        for(int i = 1; i <= 30 ; i++){
+            bit[i] = (2*bit[i-1])+1;
+        }
+
+        int sign = 1;
+        for(int i = 30 ; i>= 0 ; i--){
+            int i_th_bit = (1<<i)&n;
+            if(i_th_bit == 0){
+                continue;
+            }
+            if(sign>0){
+                ans+=bit[i];
+
+            }
+            else{
+                ans-=bit[i];
+            }
+            sign = sign*(-1);
+
+        }
+        return ans;
+
+        
+    }
+};
+// very intresting question with a tricky approach 
+
+
